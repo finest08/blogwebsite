@@ -1,3 +1,3 @@
-# cryptoblog
+# blog website
 
-Crypto Blog for Choccy
+

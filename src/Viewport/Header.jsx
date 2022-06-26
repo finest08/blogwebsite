@@ -17,7 +17,6 @@ import { TemporaryDrawer } from '../components/TemporaryDrawer';
 
 export const Header = () => {
     const { data } = useQuery(query);
-    // console.log(data)
     return (
         <AppBar elevation={4} color="info" position="fixed" sx={{ padding: 1 }}>
             {data &&
@@ -25,11 +24,11 @@ export const Header = () => {
                     <Box>
                         <TemporaryDrawer />
                     </Box>
-                    <Box>
+                    {/* <Box>
                         {data.assembly.reference.map((item, i) =>
                             <Button color="primary" component={RouterLink} to={`/${item.name}`} key={i}>{item.name}</Button>
                         )}
-                    </Box>
+                    </Box> */}
                 </Toolbar>
             }
         </AppBar >

@@ -8,9 +8,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
 import { useQuery } from "@apollo/client";
 
 import { query } from '../../client';
@@ -26,7 +28,6 @@ export const TemporaryDrawer = () => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-
         setState({ ...state, [anchor]: open });
     };
 
@@ -38,33 +39,35 @@ export const TemporaryDrawer = () => {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['The Gold Standard', 'Bitcoin','Fiat Currency', 'Self Sovereignty'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        {/* {data.assembly.reference.map((item, i) =>
-                            <Button color="info" component={RouterLink} to={`/${item.name}`} key={i}>{item.name}</Button>
-                        )} */}
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
+                {data.assembly.reference.map((item, i) => (
+                    <ListItem key={i} disablePadding>
+                        <ListItem key={i} disablePadding>
+                            <ListItemButton color="info" component={RouterLink} to={`/${item.name}`} key={i}>
+                                <ListItemIcon>
+                                    <ArrowForwardIosIcon />
+                                    {/* <StarRateIcon /> */}
+                                    {/* <StarOutlineIcon /> */}
+                                    {/* {item.name} */}
+                                </ListItemIcon>
+                                <ListItemText primary={item.name} />
+                            </ListItemButton>
+                        </ListItem>
                     </ListItem>
                 ))}
             </List>
             <Divider />
-            <List>
+            {/* <List>
                 {['All mail', 'Trash', 'Spam'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {index }
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
                     </ListItem>
                 ))}
-            </List>
+            </List> */}
         </Box>
     );
 

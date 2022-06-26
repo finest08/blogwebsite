@@ -26,10 +26,9 @@ export const query = gql`{
     }
   }
 }
-
 `;
 
 export const client = new ApolloClient({
-  uri: "",
+  uri: `${import.meta.env.VITE_APP_URI}`,
   cache: new InMemoryCache()
 });

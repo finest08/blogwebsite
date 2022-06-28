@@ -49,8 +49,6 @@ const Left = ({ content }) => {
                         <Typography variant="body1" color='primary.main' sx={{ mb: 12 }}>{content.heroSubHeader}</Typography>
                     </Container>
                 </Stack >
-                    
-                
                 {/* <Box sx={{ display: 'flex', justifyContent: { md: 'flex-end', xs: 'center' } }}>
                     {content.image.url &&
                         <CardMedia component="img" sx={{ maxWidth: '25rem' }}
@@ -109,9 +107,6 @@ const Right = ({ content }) => {
                 </Grid>
             </Grid>
         </Grid>
-
-
-        
     )
 }
 Right.propTypes = {

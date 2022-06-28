@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
@@ -8,7 +9,7 @@ import { Hero } from '../components/Hero'
 import Container from '@mui/material/Container';
 
 import { Outline } from '../components/Outline'
-import { Section } from '../components/Section';
+import { Centerd, Right } from '../components/Section';
 
 const slug = () => {
     const { view } = useParams();
@@ -21,43 +22,85 @@ const slug = () => {
 export const View = () => {
     const view = slug()
     const { data, loading } = useQuery(query);
-    
+
     const viewFilter = data && data.assembly.reference.filter(item => item.name === view)
     const header = viewFilter && viewFilter[0].reference.filter(i => i.__typename === "Hero")
     const section = viewFilter && viewFilter[0].reference.filter(i => i.__typename === "Section")
 
+    let [width, setWidth] = useState(getWidth());
+    // let [height, setHeight] = useState(getHeight());
+
+    useEffect(() => {
+        const resizeListener = () => {
+            // change width from the state object
+            setWidth(getWidth())
+            setHeight(getHeight())
+        };
+        // set resize listener
+        window.addEventListener('resize', resizeListener);
+
+        // clean up function
+        return () => {
+            // remove resize listener
+            window.removeEventListener('resize', resizeListener);
+        };
+    }, [])
+    
     return (
-        <Container maxWidth='lg' sx={{ mt: 15}}>
-            <>
-                {header &&
-                    <Hero content={{
-                    heroPrimary: header[0].heroPrimary,
-                    heroSecondary: header[0].heroSecondary,
-                    altHeader: header[0].altHeader,
-                    heroSubHeader: header[0].heroSubHeader,
-                    direction: header[0].direction
-                }}
-                />
-                }
-                {section &&
-                    <Section content={{
-                    header: section[0].header,
-                    direction: section[0].direction,
-                    description: section[0].description,
-                    section: section[0].section
-                }}
-                />
-                }
-                {/* {section &&
-                    <Post content={{ 
-                        header: section.header, 
-                        description: section.description 
-                    }} 
-                    />
-                    
-                } */}
-            </>
+        <Container maxWidth='lg' sx={{ mt: 15 }}>
+            {width > 300 && (
+                <>
+                    {header &&
+                        <Hero content={{
+                            heroPrimary: header[0].heroPrimary,
+                            heroSecondary: header[0].heroSecondary,
+                            altHeader: header[0].altHeader,
+                            heroSubHeader: header[0].heroSubHeader,
+                            direction: header[0].direction
+                        }}
+                        />
+                    }
+                    {section &&
+                        <Centerd content={{
+                            header: section[0].header,
+                            direction: section[0].direction,
+                            description: section[0].description,
+                            section: section[0].section
+                        }}
+                        />
+                    }
+                </>
+            )}
+            {width < 300 && (
+                <>
+                    {header &&
+                        <Hero content={{
+                            heroPrimary: header[0].heroPrimary,
+                            heroSecondary: header[0].heroSecondary,
+                            altHeader: header[0].altHeader,
+                            heroSubHeader: header[0].heroSubHeader,
+                            // direction: header[0].direction
+                        }}
+                        />
+                    }
+                    {section &&
+                        <Right content={{
+                        header: section[0].header,
+                        description: section[0].description,
+                        section: section[0].section
+                        }}/>
+                    }
+                </>
+            )}
             <Outline visible={loading} />
         </Container>
     )
 }
+
+const getWidth = () => window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+
+const getHeight = () => window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;

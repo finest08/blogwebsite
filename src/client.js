@@ -17,8 +17,6 @@ export const query = gql`{
           }
           ... on Section {
             section
-            direction
-            header
             description
           }
         }

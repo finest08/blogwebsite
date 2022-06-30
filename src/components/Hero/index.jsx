@@ -21,12 +21,10 @@ export const Hero = ({ content }) => {
     const direction = left()
 
     return (
-        <Box sx={direction}>
+        <Box>
             <Container maxWidth="lg" >
                 {direction && <Left content={content} />}
-                {/* {content.direction === 'Left' && <Left content={content} />} */}
                 {content.direction === 'Center' && <Centerd content={content} />}
-                {content.direction === 'Right' && <Right content={content} />}
             </Container>
         </Box>
     )
@@ -46,7 +44,7 @@ const Left = ({ content }) => {
                         <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
                         <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
                         <Typography variant="subtitle2" color='primary.main' sx={{ mb: 2 }}>{content.altHeader}</Typography>
-                        <Typography variant="body1" color='primary.main' sx={{ mb: 12 }}>{content.heroSubHeader}</Typography>
+                        <Typography variant="body1" color='primary.main' sx={{ mb: 10 }}>{content.heroSubHeader}</Typography>
                     </Container>
                 </Stack >
                 {/* <Box sx={{ display: 'flex', justifyContent: { md: 'flex-end', xs: 'center' } }}>
@@ -71,7 +69,7 @@ const Centerd = ({ content }) => {
                 <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
                 <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
                 <Typography variant="subtitle2" color='primary.main' sx={{ mb: 8 }}>{content.altHeader}</Typography>
-                <Typography variant="body1" color='primary.main'>{content.heroSubHeader}</Typography>
+                <Typography variant="body1" color='primary.main' sx={{ mb: 10 }}>{content.heroSubHeader}</Typography>
             </Container>
         </Stack >
     )
@@ -79,56 +77,6 @@ const Centerd = ({ content }) => {
 Centerd.propTypes = {
     content: PropTypes.object,
 };
-
-const Right = ({ content }) => {
-    return (
-        <Grid
-            container
-            direction="row"
-            justifyContent="right"
-            spacing={2}
-        >
-            <Grid item sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }} xs={12} md={6}>
-                {/* {content.image.url &&
-                    <CardMedia component="img" sx={{ maxWidth: '25rem' }}
-                        image={content.image.url} alt={content.image.alt} />
-                } */}
-            </Grid>
-            <Grid item xs={12} md={6}>
-                <Grid item>
-                    <Stack sx={{ mt: 5 }}>
-                        <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column', alignItems: "right" }} >
-                            <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
-                            <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
-                            <Typography variant="subtitle2" color='primary.main' sx={{ mb: 8 }}>{content.altHeader}</Typography>
-                            <Typography variant="body1" color='primary.main'>{content.heroSubHeader}</Typography>
-                        </Container>
-                    </Stack >
-                </Grid>
-            </Grid>
-        </Grid>
-    )
-}
-Right.propTypes = {
-    content: PropTypes.object,
-};
-
-// export const Hero = (props) => {
-//     const { content } = props;
-//     // console.log(content)
-//     return (
-//         <Stack sx={{ mt: 5 }}>
-//             <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column', alignItems: "left" }} >
-//                 <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
-//                 <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
-//                 <Typography variant="subtitle2" color='primary.main'  sx={{ mb: 8 }}>{content.altHeader}</Typography>
-//                 <Typography variant="body1" color='primary.main'>{content.heroSubHeader}</Typography>
-//             </Container>
-//         </Stack >
-//     )
-// }
-
-
 
 export default Hero
 

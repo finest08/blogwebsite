@@ -7,72 +7,49 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import * as PropTypes from 'prop-types';
 
-// export const Section = ({ content }) => {
-//     const left = () => {
-//         if (content.direction === null) {
-//             return 'Left'
-//         }
-//         if (content.direction === 'Left') {
-//             return 'Left'
-//         }
-//     }
-//     const direction = left()
-
-//     return (
-//         <Box sx={direction}>
-//             <Container maxWidth="lg" >
-//                 {direction && <Left content={content} />}
-//                 {content.direction === 'Center' && <Centerd content={content} />}
-//                 {content.direction === 'Right' && <Right content={content} />}
-//             </Container>
-//         </Box>
-//     )
-// }
-
-// Section.propTypes = {
-//     content: PropTypes.any,
-// };
-
-const Left = ({ content }) => {
+export const Left = ({ content }) => {
+    console.log(content.description)
     return (
-            <Grid
+        <Grid
             container
             wrap-xs-nowrap
-                justifyContent="left"
-                direction={{ xs: 'column-reverse', md: 'row' }}
-                spacing={2}
-            >
-                <Grid item xs={4} md={6}>
-                    <Typography color='primary.main' variant='h3' sx={{ mb: 5 }}>{content.header}</Typography>
-                    <Typography color='primary.main' variant='h3' sx={{ mb: 5 }}>{content.section}</Typography>
-                    <ReactMarkdown color='primary' children={content.description} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <Box sx={{ display: 'flex', justifyContent: { md: 'flex-end', xs: 'center' } }}>
-                        {/* {content.image.url &&
+            justifyContent="left"
+            direction={{ xs: 'column-reverse', md: 'row' }}
+            spacing={2}
+        >
+            <Grid item xs={4} md={6}>
+                <Typography color='primary.main' variant='h3' sx={{ mb: 5 }}>{content.header}</Typography>
+                <Typography color='primary.main' variant='h3' sx={{ mb: 5 }}>{content.section}</Typography>
+                <ReactMarkdown color='primary.main' children={content.description} />
+            </Grid>
+            <Grid item xs={12} md={6}>
+                {/* <Box sx={{ display: 'flex', justifyContent: { md: 'flex-end', xs: 'center' } }}> */}
+                {/* {content.image.url &&
                         <CardMedia component="img" sx={{ maxWidth: '25rem' }}
                             image={content.image.url} alt={content.image.alt} />
                     } */}
-                    </Box>
-                </Grid>
-            </Grid >
+                {/* </Box> */}
+            </Grid>
+        </Grid >
     )
 }
 Left.propTypes = {
     content: PropTypes.object,
 };
 
+
 export const Centerd = ({ content }) => {
+    console.log(content.description)
     return (
         <Container>
             <Grid
                 container
-                spacing={2}
-                direction={{ xs: 'column-reverse', md: 'column' }}
                 justifyContent="center"
-                sx={{ pb: 20 }}
+                direction={{ xs: 'column-reverse', md: 'column' }}
+                sx={{ p: 2, pb: 20 }}
+                spacing={2}
             >
-                <Grid item>
+                <Grid item xs={12} md={6}>
                     <Typography variant='h3' color='primary.main'>{content.header}</Typography>
                     <Typography color='primary.main'>
                         <ReactMarkdown color='primary.main' children={content.description} />
@@ -90,28 +67,5 @@ export const Centerd = ({ content }) => {
     )
 }
 Centerd.propTypes = {
-    content: PropTypes.object,
-};
-
-export const Right = ({ content }) => {
-    return (
-            <Grid
-                container
-                direction="row"
-                justifyContent="left"
-                spacing={2}
-            >
-            <Grid item xs={12} md={6} >
-                <Grid item>
-                    <Typography variant='h3' color='primary.main'>{content.header}</Typography>
-                    <Typography color='primary.main'>
-                        <ReactMarkdown color='primary.main' children={content.description} />
-                    </Typography>
-                </Grid>
-                </Grid>
-            </Grid>
-    )
-}
-Right.propTypes = {
     content: PropTypes.object,
 };

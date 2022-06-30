@@ -9,7 +9,7 @@ import { Hero } from '../components/Hero'
 import Container from '@mui/material/Container';
 
 import { Outline } from '../components/Outline'
-import { Centerd, Right } from '../components/Section';
+import { Centerd, Left } from '../components/Section';
 
 const slug = () => {
     const { view } = useParams();
@@ -19,22 +19,24 @@ const slug = () => {
     return view
 }
 
+const getWidth = () => window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+
+
 export const View = () => {
     const view = slug()
     const { data, loading } = useQuery(query);
+    let [width, setWidth] = useState(getWidth());
 
     const viewFilter = data && data.assembly.reference.filter(item => item.name === view)
     const header = viewFilter && viewFilter[0].reference.filter(i => i.__typename === "Hero")
     const section = viewFilter && viewFilter[0].reference.filter(i => i.__typename === "Section")
 
-    let [width, setWidth] = useState(getWidth());
-    // let [height, setHeight] = useState(getHeight());
-
     useEffect(() => {
         const resizeListener = () => {
             // change width from the state object
             setWidth(getWidth())
-            setHeight(getHeight())
         };
         // set resize listener
         window.addEventListener('resize', resizeListener);
@@ -45,10 +47,10 @@ export const View = () => {
             window.removeEventListener('resize', resizeListener);
         };
     }, [])
-    
+
     return (
         <Container maxWidth='lg' sx={{ mt: 15 }}>
-            {width > 300 && (
+            {width > 400 && (
                 <>
                     {header &&
                         <Hero content={{
@@ -63,7 +65,6 @@ export const View = () => {
                     {section &&
                         <Centerd content={{
                             header: section[0].header,
-                            direction: section[0].direction,
                             description: section[0].description,
                             section: section[0].section
                         }}
@@ -84,11 +85,11 @@ export const View = () => {
                         />
                     }
                     {section &&
-                        <Right content={{
-                        header: section[0].header,
-                        description: section[0].description,
-                        section: section[0].section
-                        }}/>
+                        <Left content={{
+                            header: section[0].header,
+                            description: section[0].description,
+                            section: section[0].section
+                        }} />
                     }
                 </>
             )}
@@ -96,11 +97,3 @@ export const View = () => {
         </Container>
     )
 }
-
-const getWidth = () => window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
-
-const getHeight = () => window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight;

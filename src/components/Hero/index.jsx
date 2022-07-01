@@ -43,8 +43,8 @@ const Left = ({ content }) => {
                     <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column', alignItems: "left" }} >
                         <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
                         <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
-                        <Typography variant="subtitle2" color='primary.main' sx={{ mb: 2 }}>{content.altHeader}</Typography>
-                        <Typography variant="body1" color='primary.main' sx={{ mb: 10 }}>{content.heroSubHeader}</Typography>
+                        <Typography variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
+                        <Typography variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
                     </Container>
                 </Stack >
                 {/* <Box sx={{ display: 'flex', justifyContent: { md: 'flex-end', xs: 'center' } }}>
@@ -68,8 +68,8 @@ const Centerd = ({ content }) => {
             <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column', alignItems: "center" }} >
                 <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
                 <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
-                <Typography variant="subtitle2" color='primary.main' sx={{ mb: 8 }}>{content.altHeader}</Typography>
-                <Typography variant="body1" color='primary.main' sx={{ mb: 10 }}>{content.heroSubHeader}</Typography>
+                <Typography variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
+                <Typography variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
             </Container>
         </Stack >
     )

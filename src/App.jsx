@@ -21,7 +21,7 @@ export const App = () => {
           <Viewport>
             <Suspense fallback={<Outline visible={true} />}>
               <Routes>
-              <Route exact path="/home" element={<View />} />
+              <Route default path="/home" element={<View />} />
                 <Route exact path="/:view" element={<View />} />
               </Routes>
             </Suspense>

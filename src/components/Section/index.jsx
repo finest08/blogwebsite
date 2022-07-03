@@ -2,13 +2,11 @@ import React from 'react';
 
 import ReactMarkdown from "react-markdown";
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import * as PropTypes from 'prop-types';
 
 export const Left = ({ content }) => {
-    console.log(content.description)
     return (
         <Grid
             container
@@ -37,9 +35,7 @@ Left.propTypes = {
     content: PropTypes.object,
 };
 
-
 export const Centerd = ({ content }) => {
-    console.log(content.description)
     return (
         <Container>
             <Grid

@@ -1,5 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { useState, useEffect } from 'react';
+
+import Toolbar from '@mui/material/Toolbar';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Fab from '@mui/material/Fab';
 
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
@@ -10,6 +14,7 @@ import Container from '@mui/material/Container';
 
 import { Outline } from '../components/Outline'
 import { Centerd, Left } from '../components/Section';
+import { Scroll } from '../components/Scroll';
 
 const slug = () => {
     const { view } = useParams();
@@ -23,8 +28,7 @@ const getWidth = () => window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;
 
-
-export const View = () => {
+export const View = (props) => {
     const view = slug()
     const { data, loading } = useQuery(query);
     let [width, setWidth] = useState(getWidth());
@@ -49,7 +53,9 @@ export const View = () => {
     }, [])
 
     return (
-        <Container maxWidth='lg' sx={{ mt: 15 }}>
+        <>
+        <Toolbar id="back-to-top-anchor" />
+        <Container maxWidth='lg' sx={{ mt: 5}}>
             {width > 400 && (
                 <>
                     {header &&
@@ -71,7 +77,12 @@ export const View = () => {
                         />
                     }
                 </>
-            )}
+                )}
+                <Scroll {...props}>
+                    <Fab size="small" color="secondary" aria-label="scroll back to top">
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                 </Scroll>
             {width < 300 && (
                 <>
                     {header &&
@@ -80,7 +91,6 @@ export const View = () => {
                             heroSecondary: header[0].heroSecondary,
                             altHeader: header[0].altHeader,
                             heroSubHeader: header[0].heroSubHeader,
-                            // direction: header[0].direction
                         }}
                         />
                     }
@@ -92,8 +102,9 @@ export const View = () => {
                         }} />
                     }
                 </>
-            )}
+                )}
             <Outline visible={loading} />
-        </Container>
+            </Container>
+        </>
     )
 }

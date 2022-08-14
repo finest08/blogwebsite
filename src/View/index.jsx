@@ -12,7 +12,7 @@ import { Hero } from '../components/Hero'
 import Box from '@mui/material/Box';
 
 import { Outline } from '../components/Outline'
-import { Centerd, Left } from '../components/Section';
+import { Content } from '../components/Section';
 import { Scroll } from '../components/Scroll';
 import { Grid } from '@mui/material';
 
@@ -43,12 +43,13 @@ export const View = (props) => {
                             heroSecondary: header[0].heroSecondary,
                             altHeader: header[0].altHeader,
                             heroSubHeader: header[0].heroSubHeader,
-                            direction: header[0].direction
+                            direction: header[0].direction,
                         }}
                         />
+
                     }
                     {section &&
-                        <Centerd content={{
+                        <Content content={{
                             header: section[0].header,
                             description: section[0].description,
                             section: section[0].section

@@ -24,11 +24,6 @@ export const Header = () => {
                     <Box>
                         <TemporaryDrawer />
                     </Box>
-                    {/* <Box>
-                        {data.assembly.reference.map((item, i) =>
-                            <Button color="primary" component={RouterLink} to={`/${item.name}`} key={i}>{item.name}</Button>
-                        )}
-                    </Box> */}
                 </Toolbar>
             }
         </AppBar >

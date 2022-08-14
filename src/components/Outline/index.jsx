@@ -10,14 +10,11 @@ export const Outline = ({ visible }) => {
     }
 
     return (
-        <Container maxWidth="lg" sx={{ py: 4, mt: 10 }}>
-            <Skeleton height="5rem" />
-            <Skeleton variant="rect" height="20rem" />
-            <Skeleton height="5rem" />
+        <Container maxWidth="lg" sx={{ py: 4, mt: 5 }}>
+            <Skeleton variant="rectangular" width={800} height={1000} />
         </Container>
     );
 };
-
 
 Outline.propTypes = {
     visible: PropTypes.bool

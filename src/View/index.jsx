@@ -3,18 +3,17 @@ import React from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Fab from '@mui/material/Fab';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
-
 import { query } from '../client';
 import { Hero } from '../components/Hero'
-import Box from '@mui/material/Box';
 
 import { Outline } from '../components/Outline'
 import { Content } from '../components/Section';
 import { Scroll } from '../components/Scroll';
-import { Grid, Skeleton } from '@mui/material';
 import { Container } from '@mui/system';
 
 const slug = () => {
@@ -39,25 +38,27 @@ export const View = (props) => {
             {loading ?
                 <Outline visible={true} />
                 :
-                <Container sx={{p:2}}>
-                    {header &&
-                        <Hero content={{
-                            heroPrimary: header[0].heroPrimary,
-                            heroSecondary: header[0].heroSecondary,
-                            altHeader: header[0].altHeader,
-                            heroSubHeader: header[0].heroSubHeader,
-                            direction: header[0].direction,
-                        }}
-                        />
-                    }
-                    {section &&
-                        <Content content={{
-                            header: section[0].header,
-                            description: section[0].description,
-                            section: section[0].section
-                        }}
-                        />
-                    }
+                <Container disableGutters sx={{ p: 2 }}>
+                    <Paper elevation={3} sx={{ p: 1, mt: 2, mb: 30 }}>
+                        {header &&
+                            <Hero content={{
+                                heroPrimary: header[0].heroPrimary,
+                                heroSecondary: header[0].heroSecondary,
+                                altHeader: header[0].altHeader,
+                                heroSubHeader: header[0].heroSubHeader,
+                                direction: header[0].direction,
+                            }}
+                            />
+                        }
+                        {section &&
+                            <Content content={{
+                                header: section[0].header,
+                                description: section[0].description,
+                                section: section[0].section
+                            }}
+                            />
+                        }
+                    </Paper>
                 </Container>
             }
             <Scroll {...props}>

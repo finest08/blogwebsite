@@ -1,54 +1,61 @@
 import React from 'react';
 
 import Container from "@mui/material/Container";
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as PropTypes from 'prop-types';
 
 export const Hero = ({ content }) => {
-    const left = () => {
-        if (content.direction === null) {
-            return 'Left'
-        }
-        if (content.direction === 'Left') {
-            return 'Left'
-        }
+    switch (content.direction) {
+        case "left":
+            return <Left content={content} />
+        case "right":
+            return <Right content={content} />
+        case "center":
+            return <Center content={content} />
+        default:
+            return <Left content={content} />
     }
-    const direction = left()
-
-    return (
-        <Container>
-            {direction && <Left content={content} />}
-            {content.direction === 'Center' && <Centerd content={content} />}
-        </Container>
-    )
 }
 
 const Left = ({ content }) => {
     return (
-        <Box sx={{ mt: 10, mb: 15 }}>
-            <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
-            <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
-            <Typography variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
-            <Typography variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
-        </Box >
+        <Container sx={{ mt: 5, mb: 10 }}>
+            <Typography align="left" variant="h1" color='primary.main'>{content.heroPrimary}</Typography>
+            <Typography align="left" variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
+            <Typography align="left" variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
+            <Typography align="left" variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
+        </Container >
     )
 }
 Left.propTypes = {
     content: PropTypes.object,
 };
 
-const Centerd = ({ content }) => {
+const Right = ({ content }) => {
     return (
-        <Box sx={{ mt: 10 }}>
-            <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
-            <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
-            <Typography variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
-            <Typography variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
-        </Box>
+        <Container sx={{ mt: 5, mb: 10 }}>
+            <Typography align="right" variant="h1" color='primary.main'>{content.heroPrimary}</Typography>
+            <Typography align="right" variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
+            <Typography align="right" variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
+            <Typography align="right" variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
+        </Container >
     )
 }
-Centerd.propTypes = {
+Right.propTypes = {
+    content: PropTypes.object,
+};
+
+const Center = ({ content }) => {
+    return (
+        <Container sx={{ mt: 5, mb: 10 }}>
+            <Typography align="center" variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
+            <Typography align="center" variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
+            <Typography align="center" variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>
+            <Typography align="center" variant="body1" color='primary.main' sx={{ mb: 0.5 }}>{content.heroSubHeader}</Typography>
+        </Container>
+    )
+}
+Center.propTypes = {
     content: PropTypes.object,
 };
 

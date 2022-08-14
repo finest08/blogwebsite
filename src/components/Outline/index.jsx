@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import * as PropTypes from 'prop-types';
 
@@ -10,9 +11,14 @@ export const Outline = ({ visible }) => {
     }
 
     return (
-        <Container maxWidth="lg" sx={{ py: 4, mt: 5 }}>
-            <Skeleton variant="rectangular" width={800} height={1000} />
-        </Container>
+        <Grid container spacing={2} direction="column" justifyContent="center" alignItems="center" >
+            <Grid item sx={{ mt: 10 }} >
+                <Skeleton variant="rectangular" width={300} height={200} />
+            </Grid>
+            <Grid item sx={{ mt: 10, mb: 10 }}>
+                <Skeleton variant="rectangular" width={300} height={600} />
+            </Grid>
+        </Grid>
     );
 };
 

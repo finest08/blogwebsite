@@ -8,8 +8,8 @@ import * as PropTypes from 'prop-types';
 
 export const Content = ({ content }) => {
     return (
-        <Box sx={{ mt: 2, mb: 25 }}>
-            <Container sx={{ p: 5 }}>
+        <Box sx={{ mb: 25 }}>
+            <Container>
                 <Typography variant='h3' color='primary.main'>{content.header}</Typography>
                 <Typography color='primary.main'>
                     <ReactMarkdown color='primary.main' children={content.description} />

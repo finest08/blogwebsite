@@ -17,7 +17,7 @@ export const Hero = ({ content }) => {
     const direction = left()
 
     return (
-        <Container sx={{ p: 5 }}>
+        <Container>
             {direction && <Left content={content} />}
             {content.direction === 'Center' && <Centerd content={content} />}
         </Container>
@@ -26,7 +26,7 @@ export const Hero = ({ content }) => {
 
 const Left = ({ content }) => {
     return (
-        <Box sx={{ mt: 10 }}>
+        <Box sx={{ mt: 10, mb: 15 }}>
             <Typography variant="h2" color='primary.main'>{content.heroPrimary}</Typography>
             <Typography variant="h2" color='primary.main'>{content.heroSecondary}</Typography>
             <Typography variant="subtitle2" color='primary.main' sx={{ mb: 5 }}>{content.altHeader}</Typography>

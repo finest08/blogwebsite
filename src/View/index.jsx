@@ -14,7 +14,8 @@ import Box from '@mui/material/Box';
 import { Outline } from '../components/Outline'
 import { Content } from '../components/Section';
 import { Scroll } from '../components/Scroll';
-import { Grid } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
+import { Container } from '@mui/system';
 
 const slug = () => {
     const { view } = useParams();
@@ -33,10 +34,12 @@ export const View = (props) => {
     const section = viewFilter && viewFilter[0].reference.filter(i => i.__typename === "Section")
 
     return (
-        <Grid container direction="column" justifyContent="center" alignItems="center">
+        <Box direction="column" justifyContent="center" alignItems="center" >
             <Toolbar id="back-to-top-anchor" />
-            <Grid item >
-                <Box>
+            {loading ?
+                <Outline visible={true} />
+                :
+                <Container sx={{p:2}}>
                     {header &&
                         <Hero content={{
                             heroPrimary: header[0].heroPrimary,
@@ -46,7 +49,6 @@ export const View = (props) => {
                             direction: header[0].direction,
                         }}
                         />
-
                     }
                     {section &&
                         <Content content={{
@@ -56,14 +58,14 @@ export const View = (props) => {
                         }}
                         />
                     }
-                </Box>
-                <Scroll {...props}>
-                    <Fab size="small" color="secondary" aria-label="scroll back to top">
-                        <KeyboardArrowUpIcon />
-                    </Fab>
-                </Scroll>
-                <Outline visible={loading} />
-            </Grid>
-        </Grid>
+                </Container>
+            }
+            <Scroll {...props}>
+                <Fab size="small" color="success" aria-label="scroll back to top">
+                    <KeyboardArrowUpIcon />
+                </Fab>
+            </Scroll>
+            <Outline visible={loading} />
+        </Box>
     )
 }

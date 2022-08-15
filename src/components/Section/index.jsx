@@ -8,7 +8,7 @@ import * as PropTypes from 'prop-types';
 
 export const Content = ({ content }) => {
     return (
-        <Box sx={{ mb: 25 }}>
+        <Box>
             <Container>
                 <Typography variant='h3' color='primary.main'>{content.header}</Typography>
                 <Typography color='primary.main'>

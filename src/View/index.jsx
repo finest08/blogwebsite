@@ -38,8 +38,8 @@ export const View = (props) => {
             {loading ?
                 <Outline visible={true} />
                 :
-                <Container disableGutters sx={{ p: 2 }}>
-                    <Paper elevation={3} sx={{ p: 1, mt: 2, mb: 30 }}>
+                <Container sx={{ py: 4 }}>
+                    <Paper elevation={3} sx={{ px: 2, pt: 4, pb: 15 }}>
                         {header &&
                             <Hero content={{
                                 heroPrimary: header[0].heroPrimary,

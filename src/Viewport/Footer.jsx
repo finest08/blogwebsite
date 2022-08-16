@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
-// import DiscordIcon from '@mui/material/Discord'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import EmailIcon from '@mui/icons-material/Email';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -22,6 +21,9 @@ export const Footer = () => {
                     </IconButton>
                     <IconButton href="https://twitter.com/@mrmamosw" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                         <TwitterIcon color="info" />
+                    </IconButton>
+                    <IconButton  target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <InstagramIcon color="info" />
                     </IconButton>
                 </Stack>
             </Stack>

@@ -13,7 +13,7 @@ import { IconButton, Stack } from '@mui/material';
 export const Footer = () => {
     return (
         <Box component="footer" sx={{ backgroundColor: 'primary.main' }}>
-            <Stack direction='column' justifyContent="center" alignItems="flex-start" sx={{ pt: 4, px: 4 }}>
+            <Stack direction='column' justifyContent="center" alignItems="center" sx={{ pt: 4, px: 4 }}>
                 <Stack direction='row' alignItems="center" spacing={0}>
                     <IconButton href="mailto:@" target="_blank" rel="noopener noreferrer" aria-label="Email">
                         <AlternateEmailIcon color="info" />

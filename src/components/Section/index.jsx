@@ -4,7 +4,6 @@ import ReactMarkdown from "react-markdown";
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import * as PropTypes from 'prop-types';
 
 export const Content = ({ content }) => {

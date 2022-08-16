@@ -8,7 +8,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
@@ -69,9 +68,9 @@ export const TemporaryDrawer = () => {
 
     return (
         <div>
-            {['left'].map((anchor) => (
+            {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{<CurrencyBitcoinIcon fontSize='large'/>}</Button>
+                    <Button onClick={toggleDrawer(anchor, true)}>{<MenuIcon fontSize='large'/>}</Button>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}

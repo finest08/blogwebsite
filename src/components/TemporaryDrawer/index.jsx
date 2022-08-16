@@ -39,14 +39,12 @@ export const TemporaryDrawer = () => {
             <List>
                 {data.assembly.reference.map((item, i) => (
                     <ListItem key={i} disablePadding>
-                        <ListItem key={i} disablePadding>
-                            <ListItemButton color="info" component={RouterLink} to={`/${item.name}`} key={i}>
-                                <ListItemIcon>
-                                    <ArrowRightIcon />
-                                </ListItemIcon>
-                                <ListItemText sx={{ textTransform: 'capitalize'}} primary={item.name} />
-                            </ListItemButton>
-                        </ListItem>
+                        <ListItemButton color="info" component={RouterLink} to={`/${item.name}`} key={i}>
+                            <ListItemIcon>
+                                <ArrowRightIcon />
+                            </ListItemIcon>
+                            <ListItemText sx={{ textTransform: 'capitalize' }} primary={item.name} />
+                        </ListItemButton>
                     </ListItem>
                 ))}
             </List>
@@ -70,7 +68,7 @@ export const TemporaryDrawer = () => {
         <div>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{<MenuIcon fontSize='large'/>}</Button>
+                    <Button onClick={toggleDrawer(anchor, true)}>{<MenuIcon fontSize='large' />}</Button>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}

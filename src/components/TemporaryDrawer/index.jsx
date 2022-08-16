@@ -8,14 +8,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import StarRateIcon from '@mui/icons-material/StarRate';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import { useQuery } from "@apollo/client";
 
-import { query } from '../../client';
+import { query } from '@/client';
 
 export const TemporaryDrawer = () => {
     const { data } = useQuery(query);
@@ -44,12 +43,9 @@ export const TemporaryDrawer = () => {
                         <ListItem key={i} disablePadding>
                             <ListItemButton color="info" component={RouterLink} to={`/${item.name}`} key={i}>
                                 <ListItemIcon>
-                                    <ArrowForwardIosIcon />
-                                    {/* <StarRateIcon /> */}
-                                    {/* <StarOutlineIcon /> */}
-                                    {/* {item.name} */}
+                                    <ArrowRightIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={item.name} />
+                                <ListItemText sx={{ textTransform: 'capitalize'}} primary={item.name} />
                             </ListItemButton>
                         </ListItem>
                     </ListItem>
@@ -75,7 +71,7 @@ export const TemporaryDrawer = () => {
         <div>
             {['left'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{<MenuIcon />}</Button>
+                    <Button onClick={toggleDrawer(anchor, true)}>{<CurrencyBitcoinIcon fontSize='large'/>}</Button>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}

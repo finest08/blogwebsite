@@ -2,18 +2,19 @@ import React from 'react';
 
 import Toolbar from '@mui/material/Toolbar';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import Fab from '@mui/material/Fab';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import { query } from '../client';
-import { Hero } from '../components/Hero'
+import { query } from '@/client';
+import { Hero } from '@/components/Hero'
 
-import { Outline } from '../components/Outline'
-import { Content } from '../components/Section';
-import { Scroll } from '../components/Scroll';
+import { Outline } from '@/components/Outline'
+import { Content } from '@/components/Section';
+import { Scroll } from '@/components/Scroll';
 import { Container } from '@mui/system';
 
 const slug = () => {
@@ -39,7 +40,7 @@ export const View = (props) => {
                 <Outline visible={true} />
                 :
                 <Container sx={{ py: 4 }}>
-                    <Paper elevation={3} sx={{ px: 2, pt: 4, pb: 15 }}>
+                    <Paper elevation={3} sx={{ px: 2, pt: 4, pb: 16 }}>
                         {header &&
                             <Hero content={{
                                 heroPrimary: header[0].heroPrimary,
@@ -59,6 +60,9 @@ export const View = (props) => {
                             />
                         }
                     </Paper>
+                    <Box display="flex" justifyContent='center' py={10} >
+                        <CurrencyBitcoinIcon color="primary" fontSize='large' />
+                    </Box>
                 </Container>
             }
             <Scroll {...props}>

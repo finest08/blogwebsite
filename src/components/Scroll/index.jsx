@@ -29,7 +29,7 @@ export const Scroll = (props) => {
             <Box
                 onClick={handleClick}
                 role="presentation"
-                sx={{ position: 'fixed', bottom: 200, right: 20 }}
+                sx={{ position: 'fixed', bottom: 240, right: 20 }}
             >
                 {children}
             </Box>
